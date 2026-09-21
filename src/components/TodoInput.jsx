@@ -1,43 +1,43 @@
 import { useState } from 'react';
 import Button from './Button';
-//import './TodoInput.css';
-import styled from 'styled-components';
+import styles from './TodoInput.module.css';
+// import styled from 'styled-components';
 
-const FormControl = styled.div`
+// const FormControl = styled.div`
 
-  margin: 0.5rem 0;
+//   margin: 0.5rem 0;
 
 
-& label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 0.5rem;
-  color: ${props=> (props.$invalid ? 'red' : 'black')};
-}
+// & label {
+//   font-weight: bold;
+//   display: block;
+//   margin-bottom: 0.5rem;
+//   color: ${props=> (props.$invalid ? 'red' : 'black')};
+// }
 
-& input {
-  display: block;
-  width: 100%;
-  border: 1px solid ${props=> (props.$invalid ? 'red' : '#ccc')};
-  background-color: ${props=> (props.$invalid ? 'salmon' : 'transparent')};
-  font: inherit;
-  line-height: 1.5rem;
-  padding: 0 0.25rem;
-}
+// & input {
+//   display: block;
+//   width: 100%;
+//   border: 1px solid ${props=> (props.$invalid ? 'red' : '#ccc')};
+//   background-color: ${props=> (props.$invalid ? 'salmon' : 'transparent')};
+//   font: inherit;
+//   line-height: 1.5rem;
+//   padding: 0 0.25rem;
+// }
 
-& input:focus {
-  outline: none;
-  border-color: #492365;
-}
+// & input:focus {
+//   outline: none;
+//   border-color: #492365;
+// }
 
-&.invalid input{
-  border-color: red;
-  background-color: salmon;
-}
+// &.invalid input{
+//   border-color: red;
+//   background-color: salmon;
+// }
 
-&.invalid label{
-  color: red;
-}`;
+// &.invalid label{
+//   color: red;
+// }`;
 
 const TodoInput = props => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -62,8 +62,9 @@ const TodoInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl /*className={`form-control ${isValid ? '' : 'invalid'}`}*/
-        $invalid={!isValid}
+      <div /*className={`form-control ${isValid ? '' : 'invalid'}`}*/
+         /*$invalid={!isValid}*/
+         className={`${styles['form-control']} ${isValid ? '' : styles.invalid}`}
       >
         <label /*style={{color: isValid ? 'black':'red'}}*/>Checklist Task</label>
         <input
@@ -75,7 +76,7 @@ const TodoInput = props => {
           value={enteredValue}
           onChange={todoInputChangeHandler}
         />
-      </FormControl>
+      </div>
       <Button type="submit">Add Task</Button>
     </form>
   );
